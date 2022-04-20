@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ingkbu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:process id="SIMPLE" name="SIMPLE" isExecutable="true" camunda:versionTag="1.0">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1inqea4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1jeu2vg" sourceRef="Activity_1jx4wkg" targetRef="Activity_1qgaobp" />
+    <bpmn:sequenceFlow id="Flow_1inqea4" sourceRef="StartEvent_1" targetRef="Activity_1jx4wkg" />
+    <bpmn:endEvent id="Event_1ggwxxp">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${simple_complete}" event="start" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_057ebz1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_057ebz1" sourceRef="Activity_1qgaobp" targetRef="Event_1ggwxxp" />
+    <bpmn:serviceTask id="Activity_1jx4wkg" name="Step 1" camunda:delegateExpression="${simple_step1_delegate}">
+      <bpmn:incoming>Flow_1inqea4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jeu2vg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1qgaobp" name="Step 2" camunda:delegateExpression="${simple_step2_delegate}">
+      <bpmn:incoming>Flow_1jeu2vg</bpmn:incoming>
+      <bpmn:outgoing>Flow_057ebz1</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SIMPLE">
+      <bpmndi:BPMNEdge id="Flow_1jeu2vg_di" bpmnElement="Flow_1jeu2vg">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="420" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1inqea4_di" bpmnElement="Flow_1inqea4">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_057ebz1_di" bpmnElement="Flow_057ebz1">
+        <di:waypoint x="520" y="117" />
+        <di:waypoint x="572" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ggwxxp_di" bpmnElement="Event_1ggwxxp">
+        <dc:Bounds x="572" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bbmmt0_di" bpmnElement="Activity_1jx4wkg">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tk5f53_di" bpmnElement="Activity_1qgaobp">
+        <dc:Bounds x="420" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
