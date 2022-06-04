@@ -1,6 +1,5 @@
 package com.sanlea.study.camunda.cases.subtask.handle_error;
 
-import com.sanlea.study.camunda.cases.subtask.handle_error.Constant;
 import org.camunda.bpm.engine.RuntimeService;
 
 import javax.inject.Inject;
